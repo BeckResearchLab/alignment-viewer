@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash    
 # for Dave - what is this? ^^
 
 # this script aligns all fastq files in an input directory tree against
@@ -46,7 +46,7 @@ done
 
 
 # run all alignments
-for fastq in $fastq_dir*Metagenome*/Raw_Data/*.fastq.gz
+for fastq in $fastq_dir*genome*/Raw_Data/*.fastq.gz
 # have to finagle here b/c of weird file organization of data on waffle
 do
 	for reference in $fasta_dir*.fsa
@@ -55,10 +55,11 @@ do
 		echo "aligning $(basename $fastq) to reference $(basename $reference)"
 		bwa mem -M -t 28 $reference $fastq > $output_handle.sam
 		echo "converting sam to bam"
-		samtools view -bt $reference -o $output_handle.unsorted.bam $output_handle.sam
+		samtools view -bT $reference -o $output_handle.unsorted.bam $output_handle.sam
+		# the -T flag here is for a fasta reference file - still need to figure out what this is doing
 		rm $output_handle.sam
 		echo "sorting bam"
-		samtools sort $output_handle.unsorted.bam $output_handle.sorted
+		samtools sort -o $output_handle.sorted.bam $output_handle.unsorted.bam
 		rm $output_handle.unsorted.bam
 		echo "indexing bam"
 		samtools index $output_handle.sorted.bam

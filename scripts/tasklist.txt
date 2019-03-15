@@ -1,0 +1,15 @@
+../scratchspace/fastq_data/test_Metagenome_1/Raw_Data/sample_1.fastq.gz ../scratchspace/joes_reference_genomes/fasta/NC_012968.fsa ../scratchspace/test_output/NC_012968/sample_1/
+../scratchspace/fastq_data/test_Metagenome_2/Raw_Data/sample_2.fastq.gz ../scratchspace/joes_reference_genomes/fasta/NC_012968.fsa ../scratchspace/test_output/NC_012968/sample_2/
+../scratchspace/fastq_data/test_Metagenome_3/Raw_Data/sample_3.fastq.gz ../scratchspace/joes_reference_genomes/fasta/NC_012968.fsa ../scratchspace/test_output/NC_012968/sample_3/
+../scratchspace/fastq_data/test_Metagenome_1/Raw_Data/sample_1.fastq.gz ../scratchspace/joes_reference_genomes/fasta/NZ_CP033381.1.fsa ../scratchspace/test_output/NZ_CP033381.1/sample_1/
+../scratchspace/fastq_data/test_Metagenome_2/Raw_Data/sample_2.fastq.gz ../scratchspace/joes_reference_genomes/fasta/NZ_CP033381.1.fsa ../scratchspace/test_output/NZ_CP033381.1/sample_2/
+../scratchspace/fastq_data/test_Metagenome_3/Raw_Data/sample_3.fastq.gz ../scratchspace/joes_reference_genomes/fasta/NZ_CP033381.1.fsa ../scratchspace/test_output/NZ_CP033381.1/sample_3/
+../scratchspace/fastq_data/test_Metagenome_1/Raw_Data/sample_1.fastq.gz ../scratchspace/joes_reference_genomes/fasta/NZ_JMLA01000001.fsa ../scratchspace/test_output/NZ_JMLA01000001/sample_1/
+../scratchspace/fastq_data/test_Metagenome_2/Raw_Data/sample_2.fastq.gz ../scratchspace/joes_reference_genomes/fasta/NZ_JMLA01000001.fsa ../scratchspace/test_output/NZ_JMLA01000001/sample_2/
+../scratchspace/fastq_data/test_Metagenome_3/Raw_Data/sample_3.fastq.gz ../scratchspace/joes_reference_genomes/fasta/NZ_JMLA01000001.fsa ../scratchspace/test_output/NZ_JMLA01000001/sample_3/
+../scratchspace/fastq_data/test_Metagenome_1/Raw_Data/sample_1.fastq.gz ../scratchspace/joes_reference_genomes/fasta/NZ_JPOH01000001.fsa ../scratchspace/test_output/NZ_JPOH01000001/sample_1/
+../scratchspace/fastq_data/test_Metagenome_2/Raw_Data/sample_2.fastq.gz ../scratchspace/joes_reference_genomes/fasta/NZ_JPOH01000001.fsa ../scratchspace/test_output/NZ_JPOH01000001/sample_2/
+../scratchspace/fastq_data/test_Metagenome_3/Raw_Data/sample_3.fastq.gz ../scratchspace/joes_reference_genomes/fasta/NZ_JPOH01000001.fsa ../scratchspace/test_output/NZ_JPOH01000001/sample_3/
+../scratchspace/fastq_data/test_Metagenome_1/Raw_Data/sample_1.fastq.gz ../scratchspace/joes_reference_genomes/fasta/NZ_KB913035.fsa ../scratchspace/test_output/NZ_KB913035/sample_1/
+../scratchspace/fastq_data/test_Metagenome_2/Raw_Data/sample_2.fastq.gz ../scratchspace/joes_reference_genomes/fasta/NZ_KB913035.fsa ../scratchspace/test_output/NZ_KB913035/sample_2/
+../scratchspace/fastq_data/test_Metagenome_3/Raw_Data/sample_3.fastq.gz ../scratchspace/joes_reference_genomes/fasta/NZ_KB913035.fsa ../scratchspace/test_output/NZ_KB913035/sample_3/

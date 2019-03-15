@@ -1,0 +1,59 @@
+Pseudocode:
+
+Args:
+  fastq_dir
+  reference_dir
+  output_dir
+
+Returns:
+  output directory of alignments & supporting analysis files
+  organized by:
+  root_output_dir/
+    reference_dir/
+      fastq_dir/
+        alignment & other files
+
+Use GNU parallel to run alignments & processing in parallel
+
+script steps:
+1) check input & output directories
+2) check ref files & index if not indexed
+3) make output directory tree
+4) make run script with list of analysis pairs to run
+5) use GNU parallel to run list of analysis pairs
+
+
+Analysis script does this below:
+  align raw reads to fasta (bwa mem)
+    bwa mem -M -t 28 $reference $fastq > $output_handle.sam
+      Version: 0.7.17-r1188
+      Version: 0.7.17-r1198-dirty
+  convert sam to bam (samtools view)
+    samtools view -bT $reference -o $output_handle.unsorted.bam -@28 $output_handle.sam
+      Version: 1.9 (using htslib 1.9)
+      Version: 1.9 (using htslib 1.9)
+      Slow - consider multithreading with -@4
+  sort (samtools sort)
+    samtools sort -o $output_handle.sorted.bam -@28 $output_handle.unsorted.bam
+      Slow - consider multithreading with -@4
+  index (samtools index)
+    samtools index $output_handle.sorted.bam
+  calculate coverage (bedtools)
+    bedtools genomecov -bga -ibam $output_handle.sorted.bam > $output_handle.coverage.bed
+      Version:   v2.27.1
+      bedtools v2.25.0
+  variant calling (bcftools)
+    bcftools mpileup -f $reference $output_handle.sorted.bam | bcftools call -cv --ploidy 1 -o $output_handle.vcf
+      Version: 1.9 (using htslib 1.9)
+
+eventually:
+variant calling
+  freebayes
+    https://github.com/ekg/alignment-and-variant-calling-tutorial
+  bcftools mpileup -f reference.fa alignments.bam | bcftools call -mv -Ob -o calls.bcf
+  bcftools mpileup -f reference.fa alignments.bam | bcftools call -cv --ploidy 1 -o calls.vcf
+    https://samtools.github.io/bcftools/howtos/variant-calling.html
+
+  pybedtools can deal with vcf output
+
+  NOTE: be sure to use the -haploid flag
