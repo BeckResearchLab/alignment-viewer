@@ -14,8 +14,12 @@
 # This output can be re-directed to a text file, and GNU parallel can then be
 # used to execute each of the calls in parallel.
 
+# example parallel call: cat tasklist.txt | parallel --colsep ' ' ./align_coverage_call.sh
+
 # "usage: $0 <fastq_directory> <reference_fasta_directory> <root_output_directory>"
+# "example: ./generate_align_tasklist.sh ../../data/jgi/ ../joes_reference_genomes/fasta/ ../alignments/ > tasklist.txt"
 # "example: ./generate_align_tasklist.sh ../scratchspace/fastq_data/ ../scratchspace/joes_reference_genomes/fasta/ ../scratchspace/test_output/"
+
 
 # check arguments and assign variables
 if [ $# -eq 3 ]; then
@@ -24,7 +28,8 @@ if [ $# -eq 3 ]; then
 		out_dir=$3
 else
 		echo "usage: $0 <fastq_directory> <reference_fasta_directory> <root_output_directory>"
-		echo "example: ./generate_align_tasklist.sh ../scratchspace/fastq_data/ ../scratchspace/joes_reference_genomes/fasta/ ../scratchspace/test_output/"
+		echo "example: ./generate_align_tasklist.sh ../../data/jgi/ ../joes_reference_genomes/fasta/ ../alignments/ > tasklist.txt"
+		# echo "example: ./generate_align_tasklist.sh ../scratchspace/fastq_data/ ../scratchspace/joes_reference_genomes/fasta/ ../scratchspace/test_output/"
 		exit 1
 fi
 
