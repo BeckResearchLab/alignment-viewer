@@ -4,7 +4,7 @@
 The purpose of this tool is to provide a simplified way to examine and explore coverage and mutations in sequence alignments
 
 ### implementation
-The alignment-viewer tool was built around the metagenome dataset of Lake Washington sediment microbes used in Janet Matsen's thesis dissertation that can be found [here]{https://digital.lib.washington.edu/researchworks/handle/1773/39975}.
+The alignment-viewer tool was built around the metagenome dataset of Lake Washington sediment microbes used in Janet Matsen's thesis dissertation that can be found [here](https://digital.lib.washington.edu/researchworks/handle/1773/39975).
 The tool is built as a jupyter notebook to allow visual eploration of different genes and regions. 
 
 ### inputs
@@ -16,10 +16,10 @@ Details on generating these files and the directory organization can be found be
 
 ### usage
 **dependencies:**
-The notebook depends on [pybedtools]{https://daler.github.io/pybedtools/}, among other packages. I found some dependency conflicts on my machine between samtools and pybedtools. A .yml file with the specifications for the environment that worked for me can be found in the [miscellaneous]{https://github.com/blasks/alignment-viewer/tree/master/miscellaneous} directory.
+The notebook depends on [pybedtools](https://daler.github.io/pybedtools/), among other packages. I found some dependency conflicts on my machine between samtools and pybedtools. A .yml file with the specifications for the environment that worked for me can be found in the [miscellaneous](https://github.com/blasks/alignment-viewer/tree/master/miscellaneous) directory.
 
 **file generation:**
-Alignment output files (.coverage.bed & .vcf) were generated using bash scripts that can be found in the [scripts]{https://github.com/blasks/alignment-viewer/tree/master/scripts} directory. 
+Alignment output files (.coverage.bed & .vcf) were generated using bash scripts that can be found in the [scripts](https://github.com/blasks/alignment-viewer/tree/master/scripts) directory. 
 This workflow runs the following steps:
 1) uses bwa to run a burrows-wheeler alignment, outputting a .sam file
 2) uses samtools to convert the .sam to a .bam file
