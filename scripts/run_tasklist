@@ -1,0 +1,3 @@
+#!/bin/bash
+
+cat tasklist.txt | parallel --jobs 4 --colsep ' ' ./align_coverage_call.sh
