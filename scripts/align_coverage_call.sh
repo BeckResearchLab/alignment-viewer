@@ -1,5 +1,7 @@
 #!/bin/bash
 
+threads=6
+
 # This script takes a single .fastq.gz file and a single .fsa fasta file,
 # as well as an output directory as inputs.
 # It then aligns the fastq reads to the fasta referernce with bwa mem,
@@ -23,15 +25,15 @@ else
 		exit 1
 fi
 
-if [ ! -e $output_handle.vcf ]; then
+if [ ! -e $output_handle.sorted.bam.bai ]; then
 	echo "aligning $fastq to reference file $reference"
-	bwa mem -M -t 28 $reference $fastq > $output_handle.sam
+	bwa mem -M -t $threads $reference $fastq > $output_handle.sam
 
 	echo "converting sam to bam"
-	samtools view -bT $reference -o $output_handle.unsorted.bam -@28 $output_handle.sam
+	samtools view -bT $reference -o $output_handle.unsorted.bam -@$threads $output_handle.sam
 
 	echo "sorting bam"
-	samtools sort -o $output_handle.sorted.bam -@28 $output_handle.unsorted.bam
+	samtools sort -o $output_handle.sorted.bam -@$threads $output_handle.unsorted.bam
 
 	echo "removing unsorted.bam and .sam files"
 	rm $output_handle.sam
@@ -39,12 +41,20 @@ if [ ! -e $output_handle.vcf ]; then
 
 	echo "indexing bam"
 	samtools index $output_handle.sorted.bam
+else
+	echo "$output_handle.sorted.bam.bai already exists"
+fi
 
+if [ ! -e $output_handle.coverage.bed ]; then
 	echo "calculating genome coverage"
 	bedtools genomecov -bga -ibam $output_handle.sorted.bam > $output_handle.coverage.bed
+else
+	echo "$output_handle.coverage.bed already exists"
+fi
 
+if [ ! -e $output_handle.vcf ]; then
 	echo "calling genome variants"
 	bcftools mpileup -f $reference $output_handle.sorted.bam | bcftools call -cv --ploidy 1 -o $output_handle.vcf
 else
-	echo "$output_handle alignment already exists"
+	echo "$output_handle.vcf alignment already exists"
 fi
